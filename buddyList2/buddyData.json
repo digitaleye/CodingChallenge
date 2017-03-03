@@ -1,0 +1,46 @@
+[
+  {
+    "userName": "Raj_1",
+    "firstName": "Raj",
+    "lastName": "Sharma",
+    "status": "A",
+    "priority": 1,
+    "email": "Raj123@gmail.com",
+    "dob": "1/1/1984",
+    "bio": "Transformer",
+    "lastSignIn": "2017-02-02T19:56:13-08:00"
+  },
+  {
+    "userName": "john_2",
+    "firstName": "John",
+    "lastName": "Hood",
+    "status": "O",
+    "priority": 2,
+    "email": "John321@gmail.com",
+    "dob": "2/2/1983",
+    "bio": "Hulk",
+    "lastSignIn": "2017-01-02T19:56:13-08:00"
+  },
+  {
+    "userName": "Matt_3",
+    "firstName": "Matt",
+    "lastName": "Cruise",
+    "status": "I",
+    "priority": 3,
+    "email": "Matt666@hotmail.com",
+    "dob": "6/8/1980",
+    "bio": "Sunny honey",
+    "lastSignIn": "2017-02-02T13:56:13-08:00"
+  },
+  {
+    "userName": "Berry_4",
+    "firstName": "Berry",
+    "lastName": "Chen",
+    "status": "B",
+    "priority": 4,
+    "email": "Berry222@gmail.com",
+    "dob": "2017-02-02T11:56:13-08:00",
+    "bio": "The rider",
+    "lastSignIn": "2017-02-02T11:40:13-08:00"
+  }
+]

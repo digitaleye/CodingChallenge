@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet" >
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="signUp.js"></script>
+</head>
+<body ng-app="signUpApp" ng-controller="signUpFormController">
+<form class="form-full sign-up" name="signUpForm" novalidate role="form" ng-submit="add(user)" >
+  <fieldset class="container">
+
+    <legend>Sign Up Form</legend>
+
+    <div class="form-group">
+
+      <label>First Name:
+        <!--Using max length of 50 Also given a pattern for letters only-->
+        <input type="text" pattern="[a-zA-Z]" maxlength="50" ng-model="user.firstName" ng-model-options="{ updateOn: 'blur' }" name="firstName" required />
+      </label>
+                <!--This is to make sure that the firstName is input mandatory-->
+                <span ng-show="signUpForm.firstName.$invalid || !signUpForm.firstName.$pristine">
+                    <span ng-show="signUpForm.firstName.$error.required">First name is required</span>
+                </span>
+      <br />
+
+      <label>Last Name:
+        <input type="text" pattern="[a-zA-Z]" ng-model="user.lastName" ng-model-options="{ updateOn: 'blur' }" name="lastName" />
+      </label>
+      <br />
+
+      <label>Birthday:
+        <!--Over here min date and max dates are set for the birthday  User must be at least 14 and not older than 150-->
+        <input type="date" ng-model="user.birthday" ng-model-options="{ updateOn: 'blur' }" name="birthday" required min="{{ minDate() | date:'yyyy-MM-dd' }}" max="{{ maxDate() | date:'yyyy-MM-dd' }}"/>
+      </label>
+                <!--This is to show that birthday is mandatory -->
+                <span ng-show="signUpForm.birthday.$invalid || !signUpForm.birthday.$pristine">
+                    <span ng-show="signUpForm.birthday.$error.required">Birthday is required</span>
+                </span>
+      <br />
+
+      <label>Username:
+        <!--Username must be an email address. It cannot be longer than 56 characters.-->
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" maxlength="56" ng-model="user.username" ng-model-options="{ updateOn: 'blur' }" name="username" required />
+      </label>
+                <!--This is to show that the username is require-->
+                <span ng-show="signUpForm.username.$invalid || !signUpForm.username.$pristine">
+                    <span ng-show="signUpForm.username.$error.required">Username is required</span>
+                    <span ng-show="signUpForm.username.$error.email">Please provide email address for Username. Example: email@address.com </span>
+                </span>
+      <br />
+
+      <label>Password (min. of 6 characters):
+        <!--Password will be minimum 6 characters-->
+        <input type="password" ng-minlength="6" ng-model="user.password" ng-model-options="{ updateOn: 'blur' }" name="password" required />
+      </label>
+                <!--This is to show that the password is require-->
+                <span ng-show="signUpForm.password.$invalid || !signUpForm.password.$pristine">
+                    <span ng-show="signUpForm.password.$error.required">Password is required</span>
+                </span>
+      <br />
+
+      <label>Confirm Password:
+        <!--Confirm password min length 6-->
+        <input type="password" minlength="6" ng-model="user.confirmPassword" ng-model-options="{ updateOn: 'blur' }" name="confirmPassword" required />
+      </label>
+                <!--Password needs to be confirmed, required.-->
+                <span ng-show="signUpForm.confirmPassword.$invalid || !signUpForm.confirmPassword.$pristine">
+                    <span ng-show="signUpForm.confirmPassword.$error.required">Confirm password please</span>
+                </span>
+      <br />
+      <br />
+      <br />
+      <!--Reset form button-->
+      <input class="sign-up" type="button" ng-click="reset()" value="Reset" />
+      <!--Submit button-->
+      <input class="sign-up" type="submit" value="Save" />
+    </div>
+
+  </fieldset>
+
+</form>
+</body>
+</html>

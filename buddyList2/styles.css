@@ -1,0 +1,151 @@
+body {
+    background-color: #385b98;
+    text-align: center;
+}
+form {
+    text-align: center;
+}
+
+
+input[type="text"], input[type="email"], input[type="number"], input[type="date"]{
+    height: 35px;
+    width: 300px;
+    font-size: 22px;
+    padding: 10px 10px 3px;
+    font-family: 'Fredoka One';
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+input[type="submit"] {
+    background-color: #C2F9BB;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 40px;
+    font-family: 'Fredoka One';
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+
+.addBtn {
+    height: 40px;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #FF715B;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    font-size: 24px;
+    font-family: 'Fredoka One', cursive;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.delete_buddy,
+.change_priority,
+.done_buddy {
+    border: none;
+    font-family: 'Fredoka One';
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 15px;
+    margin: 5px 0;
+}
+
+.delete_buddy:hover,
+.done_buddy:hover {
+    cursor: pointer;
+}
+
+.delete_buddy {
+    background-color: #ed6639;
+}
+
+.done_buddy {
+    background-color: #C2F9BB;
+}
+
+.panel-group .panel {
+    margin-left: 16%;
+    width:50%;
+    text-align: left;
+}
+.panel-heading {
+    padding: 0;
+}
+
+.panel-title a {
+    display: block;
+    padding: 10px 15px;
+}
+
+.modal{
+    width:610px;
+}
+
+.modal.fade{
+    height: 37%;
+}
+.modal-content {
+    margin-top: -3%;
+    height: 94%;
+    margin-left: -1%;
+    width: 102%;
+    -webkit-box-shadow: 0;
+    box-shadow: none;
+}
+.contactContent { margin-top: 0px}
+
+
+label{
+    display:inline-block;
+    width:100px;
+}
+
+.available{
+    color: green;
+}
+.offline{
+    color: grey;
+}
+.busy{
+    color: red;
+}
+.idle{
+    color: orange;
+}
+.change_priority {
+    background-color: #5BDEBB;
+}
+html,body {
+    margin-top:10px;
+}
+.container {
+    background-color: lightsteelblue;
+    border-radius: 25px;
+}
+.wrapperline{
+    float: left;
+}
+.move-in-front{
+    float:left;
+    margin: 5px;
+}
+.dropdown-toggle {
+    height: 35px;
+    width: 275px;
+    font-size: 22px;
+    padding: 0 10px;
+    font-family: 'Fredoka One';
+    border-radius: 7px;
+}

@@ -1,0 +1,117 @@
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <script src="buddyList.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+
+</head>
+<body>
+<br/>
+<br/>
+<div ng-app="buddyApp">
+  <div class="container">
+  <div ng-controller="buddyCtrl">
+    <h2>My Buddies</h2>
+    <br/>
+    <button class="btn btn-lg btn-primary" ng-click="openDialog('buddyService')">Add Buddy</button>
+    <br/>
+    <br/>
+    <!--Script for Add buddy dialog box-->
+    <script type="text/ng-template" id="dialog.html">
+        <div class="modal-content">
+          <form id="dialogform">
+           <div class="contactContent">
+            <br>
+            <label>User Name:</label><input required type="text" ng-model="userName"><br>
+            <label>First Name:</label><input required type="text" ng-model="firstName"><br>
+            <label>Last Name:</label><input type="text" ng-model="lastName"><br>
+            <label>Email:</label><input type="email" ng-model="email" ><br>
+            <label>DOB:</label><input type="date" ng-model="dob"><br>
+            <label>Priority:</label><input  type="number" required  ng-model="priority"><br>
+            <label>Bio:</label><input type="text" ng-model="bio"><br>
+
+           </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="dialogform" class="btn btn-primary" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <!--Dialog box for buddy priority-->
+    <script type="text/ng-template" id="priorityDialog.html">
+      <div class="modal-content">
+        <form id="priorityform">
+          <div class="contactContent">
+            <br>
+            <label>Priority:</label><input type="number" required ng-model="priority"><br>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="priorityform" class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+    <!--This is the template for the confirmation of the deletion of the buddy-->
+    <script type="text/ng-template" id="openConfirmationDialog.html">
+      <div class="modal-content">
+        <form id="confirmationform">
+          <div class="contactContent">
+            <br>
+            <h2>Are you sure you want to Delete your buddy?</h2>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="confirmationform" class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+    <!--buddy search order by and accordian list-->
+    <div id="buddy_wrap">
+      <!--Search box-->
+      <input class="seacrh_box" type="text" placeholder="Search For Buddy..." ng-model="findBuddy" />
+      <!--select Order-->
+      <select class="dropdown-toggle" ng-model="selectedOrder" ng-options="option for option in sortOptions" >
+        <option value="" disabled selected>Select Order By</option>
+      </select>
+      <!--Buddy List starts from here in-->
+      <accordion class="centered">
+        <div>
+          <div ng-repeat="buddy in buddies | filter:findBuddy | orderBy:selectedOrder " heading="{{buddy.firstName}}"  >
+
+           <accordion-group class="wrapperline" is-open="isOpen">
+            <accordion-heading>
+              <!--glyphicon-user and then the userName Name and colored status dynamically allocated according to status-->
+              <span><i class="glyphicon glyphicon-user">&nbsp</i>{{buddy.userName}}</span> &nbsp;
+              <span>Name: {{buddy.firstName}}</span> <span>{{buddy.lastName}}</span>  &nbsp;
+              <span ng-class="addColor(buddy.status)"> {{statusFunc(buddy.status)}}</span>
+              <!--Last sign in only for offline-->
+              <span ng-if="lastSignInFunc(buddy.status, buddy.lastSignIn)"> Last Sign In: {{lastSignInFunc(buddy.status, buddy.lastSignIn) | date: "MM-dd-yyyy"}} </span>
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-right': !isOpen}"></i>
+             </accordion-heading>
+               <!--the rest of the data in the expanding the list-->
+              <span>Email: {{buddy.email}}</span> &nbsp; <span>DOB: {{buddy.dob | date: "MM-dd-yyyy"}}</span> &nbsp; <span>Bio:{{buddy.bio}}</span> &nbsp; <span>Priority:{{buddy.priority}}</span>
+           </accordion-group>
+            <!--delete button and the priority button-->
+            <div class="move-in-front">
+              <button ng-click="deleteBuddy($index)" class="delete_buddy">Delete</button>
+              <button ng-click="openPriorityDialog($index)" class="change_priority"> Change Priority</button>
+            </div>
+          </div>
+        </div>
+      </accordion>
+
+    </div>
+
+
+  </div>
+ </div>
+</div>
+</body>
+</html>
