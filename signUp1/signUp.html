@@ -18,7 +18,7 @@
 
       <label>First Name:
         <!--Using max length of 50 Also given a pattern for letters only-->
-        <input type="text" pattern="[a-zA-Z]" maxlength="50" ng-model="user.firstName" ng-model-options="{ updateOn: 'blur' }" name="firstName" required />
+        <input type="text" ng-pattern="/^[a-zA-Z]*$/" maxlength="50" ng-model="user.firstName" ng-model-options="{ updateOn: 'blur' }" name="firstName" required />
       </label>
                 <!--This is to make sure that the firstName is input mandatory-->
                 <span ng-show="signUpForm.firstName.$invalid || !signUpForm.firstName.$pristine">
@@ -27,7 +27,7 @@
       <br />
 
       <label>Last Name:
-        <input type="text" pattern="[a-zA-Z]" ng-model="user.lastName" ng-model-options="{ updateOn: 'blur' }" name="lastName" />
+        <input type="text" ng-pattern="/^[a-zA-Z]*$/" ng-model="user.lastName" ng-model-options="{ updateOn: 'blur' }" name="lastName" />
       </label>
       <br />
 
